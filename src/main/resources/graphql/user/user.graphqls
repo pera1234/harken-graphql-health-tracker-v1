@@ -1,0 +1,35 @@
+type User {
+    id: String
+    firstname: String
+    lastname: String
+    avatar: String
+    email: String!
+    password: String!
+    role: Role
+    address: Address
+    reports: [Report]
+}
+
+enum Role {
+    DEFAULT
+    REPORTER
+    REPORTER_PLUS
+}
+
+input UserInput {
+    firstname: String
+    lastname: String
+    email: String!
+    password: String!
+    role: Role
+    addressInput: AddressInput
+}
+
+input UserUpdateInput {
+    firstname: String
+    lastname: String
+    email: String
+    password: String
+    role: Role
+    addressInput: AddressUpdateInput
+}

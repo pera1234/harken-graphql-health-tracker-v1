@@ -1,0 +1,55 @@
+scalar DateTime
+scalar Date
+scalar JSON
+
+# schema directives for server-side validation
+# note: client will validate input in this application
+directive @uppercase on FIELD_DEFINITION
+directive @dateFormat on FIELD_DEFINITION
+directive @connection on FIELD_DEFINITION
+
+schema {
+    query : Query
+    mutation : Mutation
+}
+
+type Query {
+    users: [User]
+    userById(id: ID!): User
+    userByEmail(email: String!): User
+
+    reportById(id: ID): Report
+    reportsByUser(userId: ID!): [Report]
+    reportsIn(reportIds: [String]!): [Report]
+
+    #server side offset based pagination
+    reports(reportPageInput: ReportPageInput): ReportPage
+
+     #server side cursor based pagination
+#    reportsPaginatedByCursor(
+#        first: Int,
+#        after: String,
+#        last: Int,
+#        before: String): ReportConnection
+
+    cityById(id: ID): City
+    city(city: String): City
+    cities: [City]
+
+    healthQualityById(id: ID): HealthQuality
+    healthQualitySummary(city: String, measureDate: DateTime): HealthQuality
+    healthQualities: [HealthQuality]
+    healthQualityHistory(healthHistoryInput: HealthHistoryInput): HealthHistory
+}
+
+type Mutation {
+    createUser(user: UserInput): User
+    updateUser(id: String!, user: UserUpdateInput): User
+
+    createReport(report: ReportInput): Report
+    updateReport(id: ID!, report: ReportUpdateInput): Report
+    createReports(report: [ReportInput]): String
+
+    createHQSummary(healthQuality: HealthQualityInput): HealthQuality
+}
+
