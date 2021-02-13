@@ -1,12 +1,12 @@
 # harken-graphql-health-tracker-v1
 
-###Introduction
+## Introduction
 
 To provide a regional diabetic heatmap, allowing users to share their health measures such as diabetes indicators anonymously.
 The application allows reports and measures to be saved. This data can be viewed on a per city basis providing health summaries
 to be displayed in barchart format, by date/health level indicator (cholesterol, blood sugar)   
 
-###Details
+## Details
 
 This graphql server project is implemented with com.graphql-java api (the reference implementation), and uses a schema first approach via the special 
 graphql dsl (called SDL). 
@@ -27,5 +27,5 @@ and comment the com.graphql-java artifacts (with a few code changes you should b
 
 A version 2 of this project is in development and again based on com.graphql-java but will take a programmatic approach.
 
-###References
+## References
 https://www.bignerdranch.com/blog/building-a-graphql-server-with-java/
